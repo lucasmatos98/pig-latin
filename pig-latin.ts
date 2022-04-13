@@ -33,7 +33,7 @@ function separate(whole: string) {
 function fixLetterCase(prefix: string, stem: string, wordPosition: number) {
     stem = stem.toLowerCase();
     let firstLetter = stem[0];
-    if (wordPosition === 0 ||(prefix != '' && prefix[0] === prefix[0].toUpperCase())) {
+    if (wordPosition === 0 || (prefix != '' && prefix[0] === prefix[0].toUpperCase())) {
         firstLetter = firstLetter.toUpperCase();
     }
     return { prefix: prefix.toLowerCase(), stem: firstLetter + stem.slice(1) };
@@ -71,7 +71,7 @@ function hasNoConsonants(prefix: string, stem: string, vowels: string[]) {
     return hasNoConsonants;
 }
 
-function translateWord(word:string, position:number) {
+function translateWord(word: string, position: number) {
     const lowerCaseVowels = ["a", "e", "i", "o", "u", "y"];
     const vowels = [
         ...lowerCaseVowels,
