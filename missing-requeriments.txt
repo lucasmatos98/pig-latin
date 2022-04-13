@@ -1,0 +1,5 @@
+* no letters
+* no consonants
+* word in the middle of the sentence with upperCase
+* punctuation
+* dont change Seperate and findParts functions, and list of vowels
