@@ -1,14 +1,16 @@
-"use strict";
 const readline = require('readline');
 const rl = readline.createInterface({
     input: process.stdin,
     output: process.stdout,
 });
+
 rl.question("What is the phrase that you want to translate?\n", translatePhrase);
+
 rl.on("close", function () {
     process.exit(0);
 });
-function findPrefixAndStem(word, vowels) {
+
+function findPrefixAndStem(word: string, vowels: string[]) {
     let prefix = "";
     let stem = "";
     let i = 0;
@@ -23,18 +25,21 @@ function findPrefixAndStem(word, vowels) {
     }
     return { prefix, stem };
 }
-function separate(whole) {
+
+function separate(whole: string) {
     return whole.split(" ");
 }
-function fixLetterCase(prefix, stem, wordPosition) {
+
+function fixLetterCase(prefix: string, stem: string, wordPosition: number) {
     stem = stem.toLowerCase();
     let firstLetter = stem[0];
-    if (wordPosition === 0 || (prefix != '' && prefix[0] === prefix[0].toUpperCase())) {
+    if (wordPosition === 0 ||(prefix != '' && prefix[0] === prefix[0].toUpperCase())) {
         firstLetter = firstLetter.toUpperCase();
     }
     return { prefix: prefix.toLowerCase(), stem: firstLetter + stem.slice(1) };
 }
-function findPunctuation(prefix, stem) {
+
+function findPunctuation(prefix: string, stem: string) {
     const punctuations = [".", ",", "!", "?", ";", ":"];
     let punctuation = '';
     const lastCharacter = stem[stem.length - 1];
@@ -44,13 +49,15 @@ function findPunctuation(prefix, stem) {
     }
     return { prefix, stem, punctuation };
 }
-function defineSuffix(hasNoConsonants) {
+
+function defineSuffix(hasNoConsonants: boolean) {
     if (hasNoConsonants) {
         return "yay";
     }
     return 'ay';
 }
-function hasNoConsonants(prefix, stem, vowels) {
+
+function hasNoConsonants(prefix: string, stem: string, vowels: string[]) {
     let hasNoConsonants = true;
     const word = prefix + stem;
     for (let i = 0; i < word.length; i++) {
@@ -60,9 +67,11 @@ function hasNoConsonants(prefix, stem, vowels) {
             break;
         }
     }
+
     return hasNoConsonants;
 }
-function translateWord(word, position) {
+
+function translateWord(word:string, position:number) {
     const lowerCaseVowels = ["a", "e", "i", "o", "u", "y"];
     const vowels = [
         ...lowerCaseVowels,
@@ -78,8 +87,9 @@ function translateWord(word, position) {
     let suffix = defineSuffix(hasNoConsonants(prefix, stem, vowels));
     return stem + prefix + suffix + punctuation;
 }
+
 // * NOTE: Here i will consider if any letter is a number so the whole word is a number
-function hasNumbers(word) {
+function hasNumbers(word: string) {
     for (let i = 0; i < word.length; i++) {
         const letter = word[i];
         if (Number.isInteger(Number(letter))) {
@@ -88,14 +98,17 @@ function hasNumbers(word) {
     }
     return false;
 }
-function translatePhrase(input) {
+
+function translatePhrase(input: string) {
     let phrase = input;
     let output = "";
+
     const separated = separate(phrase);
     for (let i = 0; i < separated.length; i++) {
         let word = separated[i];
         output += translateWord(word, i) + " ";
     }
+
     console.log(output);
     rl.close();
 }

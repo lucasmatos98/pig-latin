@@ -1,11 +1,11 @@
-* no letters
-* no consonants
-* word in the middle of the sentence with upperCase
-* punctuation
-* dont change Seperate and findParts functions, and list of vowels
-* pure functions
-* rename vars
-* break into more functions
-    tratar uppercase inicial
-    tratar palavra individual
-    tratar a frase inteira
+[] no letters
+[X] no consonants
+[X] word in the middle of the sentence with upperCase
+[X] punctuation
+[] dont change Seperate and findParts functions, and list of vowels
+[X] pure functions
+[X] rename vars
+[X] break into more functions
+    [X] tratar uppercase inicial
+    [X] tratar palavra individual
+    [X] tratar a frase inteira
