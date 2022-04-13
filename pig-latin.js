@@ -97,5 +97,7 @@ function translatePhrase(input) {
         output += translateWord(word, i) + " ";
     }
     console.log(output);
+    // here I'm forced to make this function impure so that I can use the rl.close() function
+    // and respect the async nature of the function
     rl.close();
 }
