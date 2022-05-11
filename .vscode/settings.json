@@ -1,0 +1,14 @@
+{
+    "sqltools.connections": [
+        {
+            "previewLimit": 50,
+            "server": "localhost",
+            "port": 5432,
+            "driver": "PostgreSQL",
+            "name": "kis_interview",
+            "database": "kis_interview",
+            "username": "lucasmatos98",
+            "password": "password"
+        }
+    ]
+}
